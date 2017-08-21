@@ -1,0 +1,9 @@
+[production:children]
+web-servers
+db-servers
+
+[web-servers]
+192.168.101.11
+
+[db-servers]
+192.168.101.12

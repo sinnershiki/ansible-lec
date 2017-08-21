@@ -1,0 +1,9 @@
+[test:children]
+web-servers
+db-servers
+
+[web-servers]
+192.168.102.11
+
+[db-servers]
+192.168.102.12
