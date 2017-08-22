@@ -1,3 +1,13 @@
+- name: check selinux disabled
+  shell: sestatus | grep disable > /dev/null; echo $?
+  register: is_selinux_disabled
+  changed_when: false
+  check_mode: no
+
+- name: off selinux
+  shell: setenforce 0
+  when: is_selinux_disabled.stdout != '0'
+
 - name: add epel repository
   yum:
     name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
