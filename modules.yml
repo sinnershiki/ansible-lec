@@ -1,6 +1,14 @@
 - hosts: web-servers
   become: yes
   tasks:
+    # Ansibleを適応するための依存関係解決のため。
+    - name: install libselinux-python
+      yum :
+        name: libselinux-python
+        state: latest
+      tags:
+        - ansible
+
     - name: with_itemsで複数varを処理
       debug:
         var: "{{item}}"

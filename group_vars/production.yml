@@ -1,2 +1,0 @@
-ansible_ssh_user: vagrant
-ansible_become_user: root
