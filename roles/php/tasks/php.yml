@@ -9,12 +9,16 @@
     name: php-fpm
     state: present
     enablerepo: remi-php70
+  tags:
+    - php-fpm
 
 - name: start php-fpm
   service:
     name: php-fpm
     enabled: yes
     state: started
+  tags:
+    - php-fpm
 
 # php-fpmの設定変更
 - name: php-fpm settings
@@ -26,11 +30,15 @@
     - {name: "user", webserver: "nginx"}
     - {name: "group", webserver: "nginx"}
   notify: php-fpm reload
+  tags:
+    - php-fpm
 
 - name: check if nginx exists
   stat:
     path: /etc/init.d/nginx
   register: nginx_status
+  tags:
+    - php-fpm
 
 - name: php-fpm settings in nginx
   template:
@@ -41,3 +49,5 @@
     mode: 0644
   when: nginx_status.stat.exists
   notify: nginx reload
+  tags:
+    - php-fpm

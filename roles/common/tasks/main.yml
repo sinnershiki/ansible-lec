@@ -2,8 +2,14 @@
   yum:
     name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
     state: present
+  tags:
+    - common
+    - epel
 
 - name: libselinux-python install
   yum:
     name: libselinux-python
     state: present
+  tags:
+    - common
+    - ansible

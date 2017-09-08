@@ -3,6 +3,9 @@
   register: is_added_epel
   changed_when: false
   check_mode: no
+  tags:
+    - EPEL
+    - nginx
 
 - name: add epel repository
   yum:
@@ -10,5 +13,10 @@
     state: present
   when:
     - is_added_epel == "1"
+  tags:
+    - epel
+    - nginx
 
 - include: nginx.yml
+  tags:
+    - nginx
