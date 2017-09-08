@@ -1,0 +1,6 @@
+---
+user1_password: "usr1pass"
+user2_password: "usr2pass"
+
+sudo_users:
+    - "user1"

@@ -2,5 +2,4 @@
     - db-servers
   become: yes
   roles:
-    - common
     - mysql
