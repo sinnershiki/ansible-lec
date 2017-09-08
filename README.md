@@ -6,7 +6,7 @@
 
 ```
 git checkout simple
-ansible-playbook -i test_hosts modules.yml -k -K
+ansible-playbook -i test_hosts site.yml -k -K
 ```
 
 # branch1
