@@ -3,7 +3,7 @@ web-servers
 db-servers
 
 [web-servers]
-192.168.102.11
+192.168.102.11 ansible_ssh_user=vagrant
 
 [db-servers]
-192.168.102.12
+192.168.102.12 ansible_ssh_user=vagrant

@@ -38,7 +38,7 @@
 
     - name: templateでファイルをローカルからデプロイ
       template:
-        src: config/nginx/index.html
+        src: index.html
         dest: /usr/share/nginx/html/index.html
 
     - name: statでファイルの存在確認し、registerで結果を保存
@@ -49,3 +49,8 @@
     - name: debugでstatの結果を表示
       debug:
         var: result_nginx
+
+
+    - name: debugでstatの結果を表示
+      debug:
+        var: result_nginx.stat.exists
