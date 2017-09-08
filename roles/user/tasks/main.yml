@@ -1,0 +1,9 @@
+- include: create.yml
+  tags:
+    - user
+    - user-create
+
+- include: permission.yml
+  tags:
+    - user
+    - user-permission

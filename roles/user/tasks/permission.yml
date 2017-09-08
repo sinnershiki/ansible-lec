@@ -1,0 +1,10 @@
+- name: add sudo users
+  lineinfile:
+    dest: /etc/sudoers
+    backup: yes
+    state: present
+    insertafter: "^## Allow root to run any commands anywhere"
+    line: "{{item}} ALL=(ALL) ALL"
+  with_items:
+    - "{{sudo_users}}"
+  when: sudo_users is defined

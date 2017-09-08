@@ -2,6 +2,5 @@
     - web-servers
   become: yes
   roles:
-    - common
     - nginx
     - php
