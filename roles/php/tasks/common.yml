@@ -1,0 +1,16 @@
+- name: add remi rpm_key
+  rpm_key:
+    state: present
+    key: http://rpms.famillecollet.com/RPM-GPG-KEY-remi
+
+- name: add remi repository
+  yum:
+    name: http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+    state: present
+
+# remiのデフォルトが香港に向いているが遅すぎてタイムアウトが頻発するので他に向ける
+- lineinfile:
+    path: /etc/yum/pluginconf.d/fastestmirror.conf
+    state: present
+    insertafter: '^#exclude=(.*)'
+    line: 'exclude=.asia'

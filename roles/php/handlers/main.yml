@@ -1,0 +1,11 @@
+- name: php-fpm reload
+  service:
+    name: php-fpm
+    enabled: yes
+    state: reloaded
+
+- name: nginx reload
+  service:
+    name: nginx
+    enabled: yes
+    state: reloaded

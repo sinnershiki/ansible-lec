@@ -1,0 +1,43 @@
+- name: install php from remi
+  yum:
+    name: php
+    state: present
+    enablerepo: remi-php70
+
+- name: install php-fpm from remi
+  yum:
+    name: php-fpm
+    state: present
+    enablerepo: remi-php70
+
+- name: start php-fpm
+  service:
+    name: php-fpm
+    enabled: yes
+    state: started
+
+# php-fpmの設定変更
+- name: php-fpm settings
+  replace:
+    path: /etc/php-fpm.d/www.conf
+    regexp: "^{{item.name}} = apache"
+    replace: "{{item.name}} = {{item.webserver}}"
+  with_items:
+    - {name: "user", webserver: "nginx"}
+    - {name: "group", webserver: "nginx"}
+  notify: php-fpm reload
+
+- name: check if nginx exists
+  stat:
+    path: /etc/init.d/nginx
+  register: nginx_status
+
+- name: php-fpm settings in nginx
+  template:
+    src: default.conf.j2
+    dest: /etc/nginx/conf.d/default.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: nginx_status.stat.exists
+  notify: nginx reload
