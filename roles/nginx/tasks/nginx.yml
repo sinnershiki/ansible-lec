@@ -9,3 +9,12 @@
     name: nginx
     enabled: yes
     state: started
+
+- name: deploy index.html
+  template:
+    src: index.html.j2
+    dest: "{{document_root}}/index.html"
+    owner: root
+    group: root
+    mode: 0644
+  notify: nginx reload

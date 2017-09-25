@@ -1,18 +1,7 @@
-- name: is added epel repository with echo $?
-  shell: yum repolist | grep epel >> /dev/null; echo $?
-  register: is_added_epel
-  changed_when: false
-  check_mode: no
-  tags:
-    - EPEL
-    - nginx
-
 - name: add epel repository
   yum:
     name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
     state: present
-  when:
-    - is_added_epel == "1"
   tags:
     - epel
     - nginx
