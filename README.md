@@ -1,13 +1,5 @@
 情報共有
 --
-# simpleブランチ
-
-簡易playbook
-
-```
-git checkout simple
-ansible-playbook -i test_hosts modules.yml -k -K
-```
 
 # branch1
 
