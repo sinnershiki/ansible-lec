@@ -1,19 +1,11 @@
 情報共有
 --
-# simpleブランチ
 
-簡易playbook
+# branch2
 
-```
-git checkout simple
-ansible-playbook -i test_hosts modules.yml -k -K
-```
-
-# branch1
-
-roles分離
+notify
 
 ```
-git checkout branch1
+git checkout branch2
 ansible-playbook -i test_hosts site.yml -k -K
 ```
