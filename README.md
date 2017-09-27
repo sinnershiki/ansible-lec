@@ -7,4 +7,5 @@
 ```
 git checkout branch4
 ansible-playbook -i test_hosts site.yml -k -K --tags "ansible, nginx"
+ansible-playbook -i prd_hosts site.yml -k -K --tags "ansible, nginx"
 ```

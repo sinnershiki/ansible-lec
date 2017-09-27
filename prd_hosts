@@ -1,6 +1,6 @@
 [prd:children]
-192.168.101.11
-192.168.101.12
+web-servers
+db-servers
 
 [web-servers]
 192.168.101.11
